@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-EXPOSE 3021
+EXPOSE 3031
 
 RUN apt-get update -y && \
     apt-get install -y python3 python3-dev python3-pip

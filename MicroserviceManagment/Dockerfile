@@ -1,5 +1,5 @@
 FROM node:8
-EXPOSE 3020
+EXPOSE 3030
 
 WORKDIR /usr/src/app/serviceManage
 
