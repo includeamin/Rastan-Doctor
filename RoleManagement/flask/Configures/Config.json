@@ -1,0 +1,11 @@
+{
+  "MicroServiceManagementURl" : "http://89.32.251.131:3020/",
+  "SmsToken":"cTcyZDhVR09aMGFhNTFiSmVsMUp0NWpoNXFJMWI4SjN1bDN5NmViTWY1SVF5ZFpEZlUxV3Joa2dMc0JueGR2WnU0dTJTZndCZmpqOHJVM3N4eXBKWC9GOWpNSHRlMzBuSWMzbnNuT0JYZXZpRDhDZVFYVStTZHBTbnM3aHRuSEpzYTVtZDJuK20yK0doWTVWcnZjRjYxRFZmbVVpTTB3NVFHZXZ3dFc1R0ZEVUpkV2ZRRERiaG5rdlBLeTRsWWZM",
+  "PermissionDbName":"Permissions",
+  "RolesPermissionsDbName" :"Roles_Permission",
+  "RoleServiceDatabaseName":"Words_RoleService",
+  "RoleCollection" : "Roles",
+  "UserRole":"UserRole",
+  "Auth_Token":"AuthToken"
+
+}

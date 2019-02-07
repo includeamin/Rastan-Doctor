@@ -1,0 +1,59 @@
+version: '3'
+services:
+
+  role-management:
+    restart: on-failure
+
+    build:
+      context: ./RoleManagement/flask/
+      dockerfile: Dockerfile
+    volumes:
+      - ./RoleManagement/flask:/app/rolemanage
+    ports:
+      - 3021:3021
+  user-management:
+    restart: on-failure
+    depends_on:
+      - role-management
+    build:
+      context: ./UserManagement/
+      dockerfile: Dockerfile
+    volumes:
+      - words:/app/usermanage/UsersProfileUpload
+    ports:
+      - 3022:3022
+  resource-management:
+    restart: on-failure
+    depends_on:
+      - role-management
+    build:
+      context: ./ResourceManagement/
+      dockerfile: Dockerfile
+    volumes:
+      - words:/app/resourcemanage
+    ports:
+      - 3023:3023
+  game-management:
+    restart: on-failure
+    depends_on:
+      - role-management
+    build:
+      context: ./GameManagement/
+      dockerfile: Dockerfile
+    volumes:
+      - words:/app/game/
+    ports:
+      - 3024:3024
+
+
+
+
+volumes:
+   words:
+     external:
+       name: words
+
+
+
+
+

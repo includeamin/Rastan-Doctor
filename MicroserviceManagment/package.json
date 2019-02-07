@@ -1,0 +1,21 @@
+{
+  "name": "microservicemanagment",
+  "version": "1.0.0",
+  "description": "managment of microservices",
+  "main": "index.js",
+  "scripts": {
+    "amin": "node index.js"
+  },
+  "keywords": [
+    "Amin",
+    "Jamal"
+  ],
+  "author": "includeamin (amin jamal)",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongodb": "^3.1.10",
+    "node-fetch": "^2.3.0"
+  }
+}
