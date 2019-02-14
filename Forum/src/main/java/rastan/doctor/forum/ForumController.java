@@ -12,6 +12,7 @@ import rastan.doctor.forum.tools.Authentication;
 import rastan.doctor.forum.tools.Header;
 import rastan.doctor.forum.tools.Result;
 
+import java.io.File;
 import java.util.HashMap;
 
 @RestController
@@ -30,6 +31,8 @@ public class ForumController {
 
     @GetMapping("/forum/add")
     public HashMap AddForum(@RequestHeader("Id") String Id,@RequestHeader("Token")String Token){
+
+
             repository.insert(new Forum("amin","amin","asd","amin","amin"));
             return Forum.AddForum(Id,Token,"","","","","");
 

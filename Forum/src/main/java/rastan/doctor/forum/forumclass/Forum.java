@@ -31,6 +31,7 @@ public class Forum {
     public String ForumIcon;
     public LocalDateTime Create_at;
     public LocalDateTime Update_at;
+    public ForumStatus Status;
 
     public void set_id(ObjectId _id) {
         this._id = _id;
@@ -116,6 +117,9 @@ public class Forum {
         this.FollowrsCount = 0;
         this.MessageCount = 0;
         this.Create_at = this.Update_at = LocalDateTime.now();
+        //spater muss zu INPROGRESS wechseln
+        this.Status = ForumStatus.CONFIRM;
+
 
 
     }
