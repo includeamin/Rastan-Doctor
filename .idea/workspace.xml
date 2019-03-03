@@ -28,10 +28,25 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/UserManagement/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="714" column="38" selection-start-line="714" selection-start-column="38" selection-end-line="714" selection-end-column="38" />
+            <state relative-caret-position="700">
+              <caret line="405" column="71" selection-start-line="405" selection-start-column="71" selection-end-line="405" selection-end-column="71" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
+                <element signature="e#2275#2913#0" />
+                <element signature="e#2141#2340#0" />
+                <element signature="e#2481#2575#0" />
+                <element signature="e#2625#3188#0" />
+                <element signature="e#3258#4078#0" />
+                <element signature="e#4150#4483#0" />
+                <element signature="e#4547#5551#0" />
+                <element signature="e#5694#6538#0" />
+                <element signature="e#7744#7835#0" />
+                <element signature="e#6629#9020#0" />
+                <element signature="e#9112#11086#0" />
+                <element signature="e#11336#11960#0" />
+                <element signature="e#12035#12651#0" />
+                <element signature="e#12846#14397#0" />
+                <element signature="e#14497#16045#0" />
               </folding>
             </state>
           </provider>
@@ -201,12 +216,12 @@
       <option name="presentableId" value="Default" />
       <updated>1549572568314</updated>
       <workItem from="1549572569626" duration="366000" />
-      <workItem from="1551610582228" duration="10662000" />
+      <workItem from="1551610582228" duration="11268000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11028000" />
+    <option name="totallyTimeSpent" value="11634000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1186" y="0" width="1374" height="1440" extended-state="6" />
@@ -316,10 +331,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/UserManagement/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="714" column="38" selection-start-line="714" selection-start-column="38" selection-end-line="714" selection-end-column="38" />
+        <state relative-caret-position="700">
+          <caret line="405" column="71" selection-start-line="405" selection-start-column="71" selection-end-line="405" selection-end-column="71" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#2275#2913#0" />
+            <element signature="e#2141#2340#0" />
+            <element signature="e#2481#2575#0" />
+            <element signature="e#2625#3188#0" />
+            <element signature="e#3258#4078#0" />
+            <element signature="e#4150#4483#0" />
+            <element signature="e#4547#5551#0" />
+            <element signature="e#5694#6538#0" />
+            <element signature="e#7744#7835#0" />
+            <element signature="e#6629#9020#0" />
+            <element signature="e#9112#11086#0" />
+            <element signature="e#11336#11960#0" />
+            <element signature="e#12035#12651#0" />
+            <element signature="e#12846#14397#0" />
+            <element signature="e#14497#16045#0" />
           </folding>
         </state>
       </provider>

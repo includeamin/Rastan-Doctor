@@ -715,13 +715,15 @@ def users_logout():
     return User.logout(request.headers)
 
 
+@app.route("/admin/users/status",methods=["POST","GET"])
+def admin_users_status_get_and_change():
+    pass
 
 @app.route("/test",methods=["Post"])
 def test():
     usersDb.delete_many({})
 
 
-   #return dumps(json.loads("{\"UserName\": \"\\u06a9\\u0627\\u0631\\u0628\\u0631\\u0645\\u0647\\u0645\\u0627\\u06467767\", \"Token\": \"ed3caeecbc467b38d19b4e2f91d45e68ba2799fe5c4f947e232149bea444d51d\", \"Id\": \"5c4d6ba3fe2bed048d6869dd\"}"))
 @app.route("/json",methods=["GET"])
 def test_json_body():
     usersDb.update_many({},{"$set":{"Level":0}})
