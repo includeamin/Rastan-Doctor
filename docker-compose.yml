@@ -10,7 +10,7 @@ services:
     volumes:
       - ./RoleManagement/flask:/app/rolemanage
     ports:
-      - 3021:3021
+      - 3031:3031
   user-management:
     restart: on-failure
     depends_on:
@@ -21,7 +21,7 @@ services:
     volumes:
       - words:/app/usermanage/UsersProfileUpload
     ports:
-      - 3022:3022
+      - 3032:3032
   resource-management:
     restart: on-failure
     depends_on:
@@ -32,7 +32,7 @@ services:
     volumes:
       - words:/app/resourcemanage
     ports:
-      - 3023:3023
+      - 3033:3033
   game-management:
     restart: on-failure
     depends_on:
@@ -43,7 +43,7 @@ services:
     volumes:
       - words:/app/game/
     ports:
-      - 3024:3024
+      - 3034:3034
 
 
 

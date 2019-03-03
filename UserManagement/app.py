@@ -53,9 +53,21 @@ class VerificationsCodeEmail:
 
 
 class User():
-    def __init__(self, phonenumber=None, username=None, email=None, password=None, ip=None , isactive=False):
+    def __init__(self, phonenumber=None, username=None, email=None, password=None, ip=None , isactive=False,
+                 fname=None,
+                 lname =None,
+                 ):
         self.UserName = username
         self.Email = email
+        self.Fname = fname
+        self.Lname = lname
+        self.Birthday = None
+        self.gender = None
+        self.province = None
+        self.city = None
+        self.address = None
+        self.alias = None
+        self.time = None
         self.PassWord = password
         self.Ip = ip
         self.PhoneNumber = phonenumber
@@ -65,15 +77,34 @@ class User():
         self.IsActive = isactive
         self.EndSession=datetime.datetime.now()
         self.StartSession = datetime.datetime.now()
-        self.Level=0
         self.Message={}
+        self.Status = "INPROGRESS" #CONFIRM #NOTCONFIRM
+        self.Profile = "1.png"
+
+
+
+    @staticmethod
+    def sign_up_by_phonenumber(phonenumber,fname=None,lname=None):
+        try:
+            user = usersDb.find_one({"PhoneNumber":phonenumber})
+            if user is not None:
+                if user["IsActive"] == True:
+                    return Result(False, "UAE")
+
+            if fname is None:
+                fname = User.GenUniqUserName()
+            if lname is None:
+                lname = fname
+            usersDb.delete_one({"PhoneNumber":phonenumber})
+            usersDb.insert_one(User(phonenumber,fname,lname).__dict__)
+            User.SendVerificationCode(phonenumber)
+            return Result(False,"CS") # code sent
+        except Exception as ex:
+            return Result(False,ex.args)
 
     @staticmethod
     def set_online_session(username):
         pass
-
-
-
     @staticmethod
     def int_by_phonenumber(phonenumber, username, ip ,oldusername=None):
         return User.InsertUserToDb(phonenumber, username, ip,oldusername=oldusername)
@@ -197,6 +228,26 @@ class User():
         resp = requests.post('https://RestfulSms.com/api/VerificationCode', data=json.dumps(body),
                              headers=headers).content
         logging.warning(resp)
+
+    @staticmethod
+    def active_phonenumber_code(phonenumber,code):
+        try:
+            codeindb = codesDb.find_one({"User_PhoneNumber":phonenumber})
+
+            if codeindb is None:
+                return Result(False,"CNF") # code not found
+            if codeindb["IsUsed"]:
+                return Result(False,"CU") # code used
+            if codeindb["Code"]== int(code):
+                codesDb.update_one({"_id":codeindb["_id"]},{"$set":{"IsUsed":True}})
+                usersDb.update_one({"PhoneNumber":phonenumber},{"$set":{"IsActive":True}})
+                temp = usersDb.find_one({"PhoneNumber":phonenumber})
+                token = User.GenerateUserToken(temp["_id"], phonenumber)
+                return Result(True,dumps({"Token":token,
+                                          "_id":temp["_id"]}))
+
+        except Exception as ex:
+            return Result(False,ex.args)
 
     @staticmethod
     def ActiveUserAccount(phonenumber, code,OldUserName=None):
@@ -641,114 +692,23 @@ def get():
     return "<div>User service </div><div>developed by amin jamal (includeamin)</div><div>aminjamal10@gmail.com</div>"
 
 
-@app.route("/users/signup/<by>/",methods=["POST"])
-def singup_phonenumber(by):
+@app.route("/users/signup",methods=["POST"])
+def singup_phonenumber():
     try:
-
-        signupmethod = ["phone", "email", "gust"]
-        if not signupmethod.__contains__(str(by).lower()):
-            return Result(False, "WSM")  # Wrong sign up method
-        if str(by).lower() == "phone":
-            if not Authentication.Check_AuthId(request.headers):
-                return Result(False,"Login Required")
-
-            username = request.form["UserName"] # str(request.json["UserName"]).encode("utf-8").decode("utf-8")
-            oldusername =request.form["OldUserName"] #str(request.json["OldUserName"]).encode("utf-8").decode("utf-8")
-            phonenumber = request.form["PhoneNumber"] #request.get_json()["PhoneNumber"]
-            return User.int_by_phonenumber(phonenumber, username, request.remote_addr,oldusername=oldusername)
-        if str(by).lower() == "email":
-            if not Authentication.Check_AuthId(request.headers):
-                return Result(False, "Login Required")
-            oldusername = request.form["OldUserName"]#str(request.json["OldUserName"]).encode("utf-8").decode("utf-8")
-            username = request.form["UserName"] #request.json["UserName"]
-            email = request.form["Email"]
-            password = request.form["PassWord"]
-            return User.init_by_email(username=username, email=email, ip=request.remote_addr, password=password,oldusername=oldusername)
-        if str(by).lower() == "gust":
-            return User.init_as_gust(request.remote_addr)
-        return Result(False,"WSM")#wrong signup method
+        form = request.json
+        if form is None:
+            return Result(False,"ContentType should be application/json")
+        fname = form["Fname"]
+        lname = form["Lname"]
+        phonenumber = form["PhoneNumber"]
+        return User.sign_up_by_phonenumber(phonenumber,fname,lname)
     except Exception as ex:
         return Result(False, ex.args)
 
 
-@app.route("/users/account/active/<by>/<value>/<code>",methods=["POST"])
-def activeuseraccount(by, value, code):
-    try:
-       #todo tu add kardan user ba phone bayad check shodan ru temp bashe agr unja bud overwrite kone
-        signupmethod = ["phone", "email", "gust"]
-        if not signupmethod.__contains__(str(by).lower()):
-            return Result(False, "WAM")  # wring activation method
-        if str(by).lower() == "phone":
-            result = User.ActiveUserAccount(value, code,OldUserName=request.form["OldUserName"])
-            return result
-        if str(by).lower() == "email":
-            return User.ActiveUserAccount_email(email=value, code=code,oldUserName=request.form["OldUserName"])
-        else:
-            return Result(True, "mail")
-    except Exception as ex:
-       Result(False, ex.args)
-
-
-@app.route("/users/login/<by>/<value>/<password>")
-def login(by,value,password):
-        try:
-            signupmethod = ["phone", "email", "gust"]
-            if not signupmethod.__contains__(str(by).lower()):
-                return Result(False, "WAM")  # wring login method
-            if str(by).lower() == "phone":
-                return User.login_phone(value)
-            if str(by).lower() == "email":
-                return User.login_email(value,password)
-            if str(by).lower() == "gust":
-                pass
-            return Result(False,"WLM")#wrong login method
-        except Exception as ex:
-            return Result(False, ex.args)
-
-
-@app.route("/users/exist/<username>")
-def check_usernmae(username):
-    return User.check_username_exist(username)
-
-@app.route("/users/logout")
-def logout():
-    try:
-        if not Authentication.Check_AuthId(request.headers):
-            return Result(False,"LR") #login required
-        res = User.logout(request.headers)
-
-        return Result(True,dumps(res))
-    except Exception as ex:
-        return Result(False,ex.args)
-
-
-@app.route("/system/users/validid/<id>")
-def system_check_valid_id(id):
-    try:
-        if str(request.host)[0:-5] != str(app.config["RoleService"])[7:-6]:
-            return Result(False, "Access Denied")
-        data = usersDb.find_one({"_id": objectid.ObjectId(id)})
-        if data is None:
-            return Result(False, "NOT")
-        else:
-            return Result(True, "YES")
-    except Exception as ex:
-        return Result(False,ex.args)
-
-
-@app.route("/system/users/info/<id>")
-def system_user_info(id):
-    try:
-        if str(request.host)[0:-5] != str(app.config["GameService"])[7:-6]:
-            return Result(False, "Access Denied")
-        data = usersDb.find_one({"_id": objectid.ObjectId(id)},{"Level":1,"_id":1,"UserName":1})
-        if data is None:
-            return Result(False, "NOT")
-        else:
-            return Result(True, dumps(data))
-    except Exception as ex:
-        return Result(False, ex.args)
-
+@app.route("/users/account/activation/<phonenumber>/<code>")
+def users_account_activation(phonenumber,code):
+    pass
 
 
 
@@ -771,4 +731,4 @@ def test_json_body():
 if __name__ == '__main__':
    # User.sendSms("09119518867","1242")
 
-    app.run(host="0.0.0.0", port=3022, debug=True)
+    app.run(host="0.0.0.0", port=3032, debug=True)

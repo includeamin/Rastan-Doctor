@@ -8,7 +8,7 @@
     "UserName": "includeamin",
     "PassWord": "xyz"
   },
-   "UsersManagementDb":"Words_UserManagement"
+   "UsersManagementDb":"Doctors_UserManagement"
   ,"CodesDb":"Codes",
   "UsersDb":"Users",
   "MessageDb": "Message",

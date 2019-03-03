@@ -2,20 +2,32 @@ package rastan.doctor.forum.forumclass;
 
 
 import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.domain.Example;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.web.bind.annotation.RequestHeader;
-import rastan.doctor.forum.tools.Authentication;
-import rastan.doctor.forum.tools.Header;
-import rastan.doctor.forum.tools.Result;
 
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.query.BasicQuery;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.multipart.MultipartFile;
+import rastan.doctor.forum.tools.*;
+import org.springframework.data.mongodb.core.*;
+
+import javax.sound.midi.Track;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
-//@Document(collection = "Forum")
+@Document(collection = "Forum")
 public class Forum {
     @Id
     public ObjectId _id;
@@ -105,13 +117,30 @@ public class Forum {
         return FollowrsCount;
     }
 
-    public  Forum(String Title, String Description, String OwnerId, String OwnerUserName, String ForumIcon){
+
+    public  Forum(String Title, String Description, String OwnerId, String OwnerUserName  ){
 
         this.Title = Title;
         this.Description = Description;
         this.OwerId = OwnerId;
         this.OwnerUserName = OwnerUserName;
-        this.ForumIcon = ForumIcon;
+        this.FollowrList = new LinkedList<>();
+        this.Messages = new LinkedList<>();
+        this.FollowrsCount = 0;
+        this.MessageCount = 0;
+        this.Create_at = this.Update_at = LocalDateTime.now();
+        //spater muss zu INPROGRESS wechseln
+        this.Status = ForumStatus.CONFIRM;
+
+
+
+    }
+    public  Forum(ObjectId _id,String Title, String Description, String OwnerId, String OwnerUserName  ){
+        this._id = _id;
+        this.Title = Title;
+        this.Description = Description;
+        this.OwerId = OwnerId;
+        this.OwnerUserName = OwnerUserName;
         this.FollowrList = new LinkedList<>();
         this.Messages = new LinkedList<>();
         this.FollowrsCount = 0;
@@ -127,14 +156,56 @@ public class Forum {
     public static HashMap AddForum(String Id,String Token,
                                    String title,
                                    String description,
-                                   String userId,
-                                   String UserName,
-                                   String icon){
-        if(!Authentication.IsAuth(Id,Token)){
-            return Result.Response(false,"AD");
+                                   MultipartFile file
+                        , ForumRepository repository){
+
+        //if(!Authentication.IsAuth(Id,Token)){
+        //  return Result.Response(false,"AD");
+        // }
+
+
+         HashMap UserData = Bridge.GetUserInformationById(Id);
+
+         String OwUsername = "includemain";//UserData.get("UserName").toString();
+
+         Forum forum = new Forum(title,description,Id,OwUsername);
+        Forum exist = repository.findByTitle(title);
+        if (exist!=null){
+            System.out.println(exist.OwnerUserName);
+            return Result.Response(true,"FAE");
         }
 
+
+
+
+
+
+
+         repository.insert(forum);
+         HashMap upload = UploadIcon(file,forum._id.toHexString());
+
+         System.out.println(upload.toString());
+
+
         return Result.Response(true,Id);
+    }
+
+    public static HashMap UploadIcon(MultipartFile file ,String forumId){
+        try {
+            if( file.isEmpty()){
+                return Result.Response(false,"FNF"); // file not found
+            }
+            byte[] bytes = file.getBytes();
+            Path path = Paths.get(Tools.GetForumUploadsDir(forumId)+"/" + file.getOriginalFilename());
+            System.out.println(path.toString());
+            Files.write(path, bytes);
+            return Result.Response(true,"FA"); // forum added
+
+        }
+        catch (Exception e){
+            return Result.Response(false,e.getMessage());
+
+        }
     }
 
 }
