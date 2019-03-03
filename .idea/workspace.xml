@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14ed4991-f9b5-4db8-85ae-0618571984b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Forum/src/main/java/rastan/doctor/forum/tools/Bridge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/UsersTest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forum/src/main/java/rastan/doctor/forum/ForumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Forum/src/main/java/rastan/doctor/forum/ForumController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forum/src/main/java/rastan/doctor/forum/forumclass/Forum.java" beforeDir="false" afterPath="$PROJECT_DIR$/Forum/src/main/java/rastan/doctor/forum/forumclass/Forum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forum/src/main/java/rastan/doctor/forum/forumclass/ForumRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Forum/src/main/java/rastan/doctor/forum/forumclass/ForumRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forum/src/main/java/rastan/doctor/forum/tools/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/Forum/src/main/java/rastan/doctor/forum/tools/Tools.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forum/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Forum/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserManagement/Config.json" beforeDir="false" afterPath="$PROJECT_DIR$/UserManagement/Config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserManagement/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserManagement/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/UserManagement/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="246" column="62" lean-forward="true" selection-start-line="246" selection-start-column="62" selection-end-line="246" selection-end-column="62" />
+            <state relative-caret-position="481">
+              <caret line="714" column="38" selection-start-line="714" selection-start-column="38" selection-end-line="714" selection-end-column="38" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -211,12 +201,12 @@
       <option name="presentableId" value="Default" />
       <updated>1549572568314</updated>
       <workItem from="1549572569626" duration="366000" />
-      <workItem from="1551610582228" duration="10017000" />
+      <workItem from="1551610582228" duration="10662000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10383000" />
+    <option name="totallyTimeSpent" value="11028000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1186" y="0" width="1374" height="1440" extended-state="6" />
@@ -326,8 +316,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/UserManagement/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="246" column="62" lean-forward="true" selection-start-line="246" selection-start-column="62" selection-end-line="246" selection-end-column="62" />
+        <state relative-caret-position="481">
+          <caret line="714" column="38" selection-start-line="714" selection-start-column="38" selection-end-line="714" selection-end-column="38" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>

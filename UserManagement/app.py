@@ -245,9 +245,9 @@ class User():
                 token = User.GenerateUserToken(temp["_id"], phonenumber)
                 return Result(True,dumps({"Token":token,
                                           "_id":temp["_id"]}))
-
         except Exception as ex:
             return Result(False,ex.args)
+
 
     @staticmethod
     def ActiveUserAccount(phonenumber, code,OldUserName=None):
@@ -708,7 +708,11 @@ def singup_phonenumber():
 
 @app.route("/users/account/activation/<phonenumber>/<code>")
 def users_account_activation(phonenumber,code):
-    pass
+    return User.active_phonenumber_code(phonenumber,code)
+
+@app.route("/users/logout")
+def users_logout():
+    return User.logout(request.headers)
 
 
 
