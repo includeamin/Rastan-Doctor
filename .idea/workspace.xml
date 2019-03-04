@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14ed4991-f9b5-4db8-85ae-0618571984b0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/UserManagement/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserManagement/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,7 +15,7 @@
     <SUITE FILE_PATH="coverage/Rastan_Doctor$UsersTest.coverage" NAME="UsersTest Coverage Results" MODIFIED="1551620539618" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Test" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RoleManagement/flask/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
@@ -28,25 +28,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/UserManagement/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="700">
+            <state relative-caret-position="1170">
               <caret line="405" column="71" selection-start-line="405" selection-start-column="71" selection-end-line="405" selection-end-column="71" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
                 <element signature="e#2275#2913#0" />
-                <element signature="e#2141#2340#0" />
-                <element signature="e#2481#2575#0" />
-                <element signature="e#2625#3188#0" />
-                <element signature="e#3258#4078#0" />
-                <element signature="e#4150#4483#0" />
-                <element signature="e#4547#5551#0" />
-                <element signature="e#5694#6538#0" />
-                <element signature="e#7744#7835#0" />
-                <element signature="e#6629#9020#0" />
-                <element signature="e#9112#11086#0" />
-                <element signature="e#11336#11960#0" />
-                <element signature="e#12035#12651#0" />
-                <element signature="e#12846#14397#0" />
-                <element signature="e#14497#16045#0" />
               </folding>
             </state>
           </provider>
@@ -64,7 +50,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Test/UsersTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="195">
               <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -102,10 +88,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="1290" />
-    <option name="width" value="1270" />
-    <option name="height" value="1440" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1269" />
+    <option name="y" value="23" />
+    <option name="width" value="1287" />
+    <option name="height" value="1339" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -216,15 +203,16 @@
       <option name="presentableId" value="Default" />
       <updated>1549572568314</updated>
       <workItem from="1549572569626" duration="366000" />
-      <workItem from="1551610582228" duration="11268000" />
+      <workItem from="1551610582228" duration="11358000" />
+      <workItem from="1551685366137" duration="597000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11634000" />
+    <option name="totallyTimeSpent" value="12321000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1186" y="0" width="1374" height="1440" extended-state="6" />
+    <frame x="1269" y="23" width="1287" height="1339" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.27327326" />
@@ -232,7 +220,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.329927" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.329927" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -305,6 +293,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Test/UsersTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/UserManagement/Config.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -319,37 +317,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test/UsersTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/UserManagement/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
+        <state relative-caret-position="1170">
           <caret line="405" column="71" selection-start-line="405" selection-start-column="71" selection-end-line="405" selection-end-column="71" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
             <element signature="e#2275#2913#0" />
-            <element signature="e#2141#2340#0" />
-            <element signature="e#2481#2575#0" />
-            <element signature="e#2625#3188#0" />
-            <element signature="e#3258#4078#0" />
-            <element signature="e#4150#4483#0" />
-            <element signature="e#4547#5551#0" />
-            <element signature="e#5694#6538#0" />
-            <element signature="e#7744#7835#0" />
-            <element signature="e#6629#9020#0" />
-            <element signature="e#9112#11086#0" />
-            <element signature="e#11336#11960#0" />
-            <element signature="e#12035#12651#0" />
-            <element signature="e#12846#14397#0" />
-            <element signature="e#14497#16045#0" />
           </folding>
         </state>
       </provider>
