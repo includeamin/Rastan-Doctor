@@ -104,6 +104,14 @@ class User():
     def login_doctor(phonenumber):
         # if user login befor create new token
         # check_auth mechanisem check token at first then check userid this fix bug
+        try:
+            exist = usersDb.find_one({"PhoneNumber":phonenumber})
+            if exist is None:
+                return Result(False,"UNF")
+            #check with role server that is login or not and then create new token
+            #in role management server auth check with token then userid instead of userid then token
+        except Exception as ex:
+            return Result(False,ex.args)
 
         pass
 
