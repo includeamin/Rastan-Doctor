@@ -73,7 +73,6 @@ class User():
         self.PhoneNumber = phonenumber
         self.Create_at = datetime.datetime.now()
         self.Update_at = datetime.datetime.now()
-        self.Inventory = ""
         self.IsActive = isactive
         self.EndSession=datetime.datetime.now()
         self.StartSession = datetime.datetime.now()
@@ -101,6 +100,14 @@ class User():
             return Result(False,"CS") # code sent
         except Exception as ex:
             return Result(False,ex.args)
+    @staticmethod
+    def login_doctor(phonenumber):
+        # if user login befor create new token
+        # check_auth mechanisem check token at first then check userid this fix bug
+
+        pass
+
+
 
     @staticmethod
     def set_online_session(username):
@@ -709,6 +716,11 @@ def singup_phonenumber():
 @app.route("/users/account/activation/<phonenumber>/<code>")
 def users_account_activation(phonenumber,code):
     return User.active_phonenumber_code(phonenumber,code)
+
+
+@app.route("/users/login/<phonenumber>")
+def login(phonenumber):
+    pass
 
 @app.route("/users/logout")
 def users_logout():
